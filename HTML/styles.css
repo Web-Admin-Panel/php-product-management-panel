@@ -1,0 +1,160 @@
+.header {
+  width: 60%;
+  margin: 50px auto 70px;
+}
+
+.header__nav-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__nav-list-item {
+  list-style-type: none;
+}
+
+.header__nav-list-link {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  background: #3456F3;
+  border-radius: 3px;
+  padding: 13px 50px;
+  cursor: pointer;
+}
+
+.logout {
+  pointer-events: none;
+}
+
+.active {
+  background-color: #0E3386;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.form__select {
+  border: none;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  padding: 15px 0px 15px 5px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  width: 100px;
+  border: none;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  padding: 15px 0 15px 15px;
+}
+
+.file__wrapper {
+  width: 150px;
+}
+
+.file__input {
+  width: 150px;
+  position: relative;
+}
+
+.file__text {
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  padding: 15px 0 15px 15px;
+  position: absolute;
+  z-index: 1;
+  width: 88px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__container {
+  padding: 70px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__logo {
+  margin-bottom: 30px;
+}
+
+.login__form {
+  width: 400px;
+}
+
+.login__fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.login__input-name {
+  font-size: 12px;
+  line-height: 12px;
+  color: #A0A0A0;
+  margin-bottom: 10px;
+}
+
+.login__input {
+  width: 100%;
+  border: none;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  padding: 15px 0 15px 15px;
+}
+
+.login__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 2px 50px;
+  width: 100%;
+}
+
+.login__button {
+  font-size: 14px;
+  line-height: 17px;
+  background: #3456F3;
+  border-radius: 3px;
+  border: none;
+  color: #FFFFFF;
+  padding: 13px 50px;
+  cursor: pointer;
+}
+
+.login__password {
+  font-size: 16px;
+  color: #A0A0A0;
+  text-decoration: none;
+  text-align: center;
+}
+
+@media screen and (max-width: 445px) {
+  .login__form {
+    width: 290px;
+  }
+
+  .login__logo {
+    margin-bottom: 20px;
+  }
+
+  .login__button {
+    font-size: 12px;
+    padding: 10px 30px;
+  }
+
+  .login__password {
+    font-size: 14px;
+  }
+}
