@@ -9,7 +9,7 @@
 <body>
   <main class="login">
     <div class="login__container">
-      <img class="login__logo" src="./logo.png" alt="Logo">
+      <img class="login__logo" src="logo.png" alt="Logo">
       <h2 class="login__title">Welcome!</h2>
       <form class="login__form">
         <fieldset class="login__fieldset">
