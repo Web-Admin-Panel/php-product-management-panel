@@ -39,11 +39,19 @@
             <option>Desserts</option>
           </select>
         </div>
-        <div class="file__wrapper">
+<!--        <div class="file__wrapper">-->
+<!--          <p class="login__input-name">Preview image</p>-->
+<!--          <label for="files" class="file__text">Choose file</label>-->
+<!--          <input id="files" class="login__input file__input" type="file" required>-->
+<!--        </div>-->
+      <div class="file__wrapper">
           <p class="login__input-name">Preview image</p>
-          <label for="files" class="file__text">Choose file</label>
-          <input id="files" class="login__input file__input" type="file" required>
-        </div>
+          <div id="drop-area" class="drop-area">
+              <span class="file__text">Drag & Drop image here</span>
+              <input id="files" class="login__input file__input" type="file" required>
+          </div>
+      </div>
+
       </div>
       <div class="login__buttons">
         <button type="reset" class="login__button">Reset</button>
@@ -51,5 +59,42 @@
       </div>
     </form>
   </main>
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const dropArea = document.getElementById('drop-area');
+          const fileInput = document.getElementById('files');
+          const fileText = document.querySelector('.file__text');
+
+          dropArea.addEventListener('dragover', (event) => {
+              event.preventDefault();
+              dropArea.classList.add('dragover');
+          });
+
+          dropArea.addEventListener('dragleave', (event) => {
+              dropArea.classList.remove('dragover');
+          });
+
+          dropArea.addEventListener('drop', (event) => {
+              event.preventDefault();
+              dropArea.classList.remove('dragover');
+              const files = event.dataTransfer.files;
+              if (files.length) {
+                  fileInput.files = files;
+                  updateFileNameDisplay(files[0].name);
+              }
+          });
+
+          fileInput.addEventListener('change', (event) => {
+              if (event.target.files.length) {
+                  updateFileNameDisplay(event.target.files[0].name);
+              }
+          });
+
+          function updateFileNameDisplay(name) {
+              fileText.innerText = name;
+          }
+      });
+  </script>
+
 </body>
 </html>

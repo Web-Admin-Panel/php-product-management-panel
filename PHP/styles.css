@@ -56,23 +56,51 @@
   padding: 15px 0 15px 15px;
 }
 
-.file__wrapper {
+
+.drop-area {
   width: 150px;
+  position: relative;
+  background-color: #F9F9F9;
+  border: 2px dashed #ccc; /* Optional: for dashed border */
+  border-radius: 8px;
+  padding: 14px;
+}
+
+/* Optional: additional styles for when a file is being dragged over the area */
+.drop-area.dragover {
+  border-color: #000;
 }
 
 .file__input {
   width: 150px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Hide the actual input and will be triggered by label */
 }
 
 .file__text {
-  background-color: #F9F9F9;
-  border-radius: 8px;
-  padding: 15px 0 15px 15px;
-  position: absolute;
-  z-index: 1;
-  width: 88px;
+  font-size: 14px;
 }
+
+
+/*.file__wrapper {*/
+/*  width: 150px;*/
+/*}*/
+
+/*.file__input {*/
+/*  width: 150px;*/
+/*  position: relative;*/
+/*}*/
+
+/*.file__text {*/
+/*  background-color: #F9F9F9;*/
+/*  border-radius: 8px;*/
+/*  padding: 15px 0 15px 15px;*/
+/*  position: absolute;*/
+/*  z-index: 1;*/
+/*  width: 88px;*/
+/*}*/
 
 .login {
   display: flex;
