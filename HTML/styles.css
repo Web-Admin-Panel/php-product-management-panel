@@ -149,7 +149,18 @@
 
 .footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin: 600px 150px 0;
+}
+
+.footer__icon {
+  width: 28px;
+  margin-right: 10px;
+}
+
+.footer__icon:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 445px) {
