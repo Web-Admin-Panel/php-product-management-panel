@@ -1,9 +1,12 @@
 .header {
   width: 60%;
   margin: 50px auto 70px;
+  display: flex;
+  align-items: center;
 }
 
 .header__nav-list {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -20,6 +23,10 @@
   border-radius: 3px;
   padding: 13px 50px;
   cursor: pointer;
+}
+
+.logo {
+  width: 70px;
 }
 
 .logout {
@@ -151,7 +158,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 600px 150px 0;
+  width: 60%;
+  margin: 500px auto 0;
 }
 
 .footer__icon {
@@ -164,7 +172,7 @@
 }
 
 .order {
-  width: 80%;
+  width: 60%;
   margin: auto;
   display: flex;
 }
