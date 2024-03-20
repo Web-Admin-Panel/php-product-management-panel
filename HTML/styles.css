@@ -163,6 +163,16 @@
   opacity: 0.8;
 }
 
+.order {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.form__select-order {
+  margin-right: 15px;
+}
+
 @media screen and (max-width: 445px) {
   .login__form {
     width: 290px;
