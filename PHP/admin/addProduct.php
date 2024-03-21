@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Product</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
   <header class="header">
@@ -12,13 +12,15 @@
       <ul class="header__nav-list">
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link">Home page</a></li>
         <li class="header__nav-list-item"><a href="addProduct.html" class="header__nav-list-link active">Add Product</a></li>
-        <li class="header__nav-list-item"><a href="manageUsers.html" class="header__nav-list-link">Manage Users</a></li>
+        <li class="header__nav-list-item"><a href="manageUsers.php" class="header__nav-list-link">Manage Users</a></li>
         <li class="header__nav-list-item"><a href="/" class="header__nav-list-link logout">Log Out</a></li>
       </ul>
     </nav>
   </header>
   <main class="page">
+
     <form class="login__form">
+    <img class="login__logo" src="../logo.png" alt="Logo">
       <fieldset class="login__fieldset">
         <p class="login__input-name">Name</p>
         <input class="login__input" type="text" required>

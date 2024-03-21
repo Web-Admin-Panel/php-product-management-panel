@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
   <main class="login">
     <div class="login__container">
-      <img class="login__logo" src="logo.png" alt="Logo">
+      <img class="logo" src="../images/logo.png" alt="Logo">
       <h2 class="login__title">Welcome!</h2>
       <form class="login__form">
         <fieldset class="login__fieldset">
@@ -20,7 +20,7 @@
         </fieldset>
         <div class="login__buttons">
           <button class="login__button">Log In</button>
-          <button class="login__button">Sign Up</button>
+          <a href="signup.php" class="login__button">Sign Up</a>
         </div>
       </form>
       <a href="/" class="login__password">Forgot password?</a>
