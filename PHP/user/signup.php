@@ -56,10 +56,16 @@
 
       }
 
-//      $sql_stmt = $con->prepare("INSERT INTO users(name, username, email, password) VALUES ('$name', '$username', '$email', '$password')";)
-      $sql = "INSERT INTO users(name, username, email, password) VALUES ('$name', '$username', '$email', '$password')";
+      $sql_stmt = $con->prepare("INSERT INTO users(name, username, email, password) VALUES (?, ?, ?, ?);");
+//      $sql = "INSERT INTO users(name, username, email, password) VALUES ('$name', '$username', '$email', '$password')";
+      $sql_stmt->bind_param("ssss", $name, $username, $email, $password);
+      $name = mysqli_real_escape_string($con, $name);
+      $email = mysqli_real_escape_string($con, $email);
+      $username = mysqli_real_escape_string($con, $username);
+      $password = mysqli_real_escape_string($con, $password);
 
-      if(mysqli_query($con, $sql)){
+//      if(mysqli_query($con, $sql)){
+      if($sql_stmt->execute()){
           echo "<h3>You've signed up successfully!</h3>";
           header("Location: homePage.php");
       }
