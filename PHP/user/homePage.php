@@ -1,3 +1,20 @@
+<?php
+$cnn = mysqli_connect("0.0.0.0", "root", null, "CMPR_Project", 4306);
+if (!$cnn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch products from database
+$query = "SELECT product_name, product_description, product_category, price, preview_image_name FROM products";
+$result = mysqli_query($cnn, $query);
+
+if (!$result) {
+    die("Error: " . mysqli_error($cnn));
+}
+mysqli_close($cnn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +56,25 @@
         </select>
       </div>
     </div>
+      <div class="home__grid-container">
+          <?php
+          if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<div class="home__grid-item">';
+                  $image_path = "../data/preview_images/" . htmlspecialchars($row['preview_image_name']);
+                  echo '<img class="home__img" src="../data/preview_images/' . htmlspecialchars($row['preview_image_name']) . '" alt="' . htmlspecialchars($row['product_name']) . '">';
+                  echo '<h3>' . htmlspecialchars($row['product_name']) . '</h3>';
+                  echo '<p>' . htmlspecialchars($row['product_description']) . '</p>';
+                  echo '<p>Category: ' . htmlspecialchars($row['product_category']) . '</p>';
+                  echo '<p>Price: ' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
+                  echo '</div>';
+              }
+          } else {
+              echo "No products found.";
+          }
+          ?>
+      </div>
+
   </main>
   <footer class="footer">
     <p>Instant Hunger Fix, Delivered</p>

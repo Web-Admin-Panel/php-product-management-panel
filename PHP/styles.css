@@ -78,7 +78,7 @@
   padding: 15px 0 15px 15px;
   position: absolute;
   z-index: 1;
-  width: 88px;
+  width: 150px;
 }
 
 .login {
@@ -181,6 +181,24 @@
   margin-right: 15px;
 }
 
+
+.home__grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto; /* Adjust column count based on your design */
+  padding: 10px;
+}
+.home__grid-item {
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  margin: 10px;
+}
+.home__img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 @media screen and (max-width: 445px) {
   .login__form {
     width: 290px;
@@ -199,3 +217,5 @@
     font-size: 14px;
   }
 }
+
+
