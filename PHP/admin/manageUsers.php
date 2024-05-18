@@ -1,3 +1,7 @@
+<?php
+include ("../session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +17,14 @@
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link">Home page</a></li>
         <li class="header__nav-list-item"><a href="addProduct.php" class="header__nav-list-link">Add Product</a></li>
         <li class="header__nav-list-item"><a href="manageUsers.php" class="header__nav-list-link active">Manage Users</a></li>
-        <li class="header__nav-list-item"><a href="/" class="header__nav-list-link logout">Log Out</a></li>
+        <li class="header__nav-list-item"><a href="../user/logout.php" class="header__nav-list-link">Log Out</a></li>
       </ul>
     </nav>
   </header>
 </body>
 </html>
 <?php
+
 $cnn = mysqli_connect("0.0.0.0","root",null,"CMPR_Project", 4306);
 if (!$cnn)
 {

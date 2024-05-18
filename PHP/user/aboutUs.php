@@ -1,3 +1,6 @@
+<?php
+include ("../session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link">Home page</a></li>
         <li class="header__nav-list-item"><a href="cart.php" class="header__nav-list-link">My Cart</a></li>
         <li class="header__nav-list-item"><a href="aboutUs.php" class="header__nav-list-link active">About Us</a></li>
-        <li class="header__nav-list-item"><a href="/" class="header__nav-list-link logout">Log Out</a></li>
+        <li class="header__nav-list-item"><a href="logout.php" class="header__nav-list-link">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -61,3 +64,4 @@
   </footer>
 </body>
 </html>
+

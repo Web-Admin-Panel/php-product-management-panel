@@ -25,3 +25,4 @@
 /app/Config/database.php
 /vendors/*
 .DS_Store
+/PHP/data/preview_images/

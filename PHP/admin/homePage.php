@@ -1,17 +1,20 @@
 <?php
-$cnn = mysqli_connect("0.0.0.0", "root", null, "CMPR_Project", 4306);
-if (!$cnn) {
+include ("../session.php");
+?>
+<?php
+$con = mysqli_connect("0.0.0.0", "root", null, "CMPR_Project", 4306);
+if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
 // Fetch products from database
 $query = "SELECT product_id, product_name, product_description, product_category, price, preview_image_name FROM products";
-$result = mysqli_query($cnn, $query);
+$result = mysqli_query($con, $query);
 
 if (!$result) {
-    die("Error: " . mysqli_error($cnn));
+    die("Error: " . mysqli_error($con));
 }
-mysqli_close($cnn);
+mysqli_close($con);
 
 ?>
 
@@ -34,6 +37,29 @@ mysqli_close($cnn);
       </ul>
     </nav>
   </header>
+  <div class="order">
+      <form class="form__select-order" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
+          <p class="login__input-name">ORDER BY</p>
+          <select class="form__select" name="sort_by">
+              <option value="product_name">Alphabet</option>
+              <option value="price">Price</option>
+              <!-- <option value="date">Date</option> -->
+          </select>
+          <select class="form__select" name="order">
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+          </select>
+          <p class="login__input-name">DISPLAY</p>
+          <select class="form__select" name="display_group">
+              <option value="all">All</option>
+              <option value="meals">Meals</option>
+              <option value="drinks">Drinks</option>
+              <option value="starters">Starters</option>
+              <option value="desserts">Desserts</option>
+          </select>
+          <button type="submit">SHOW</button>
+      </form>
+  </div>
   <div class="home__grid-container">
       <?php
       if (mysqli_num_rows($result) > 0) {

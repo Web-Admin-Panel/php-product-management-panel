@@ -1,3 +1,6 @@
+<?php
+include ("../session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,7 @@
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link">Home page</a></li>
         <li class="header__nav-list-item"><a href="addProduct.php" class="header__nav-list-link active">Add Product</a></li>
         <li class="header__nav-list-item"><a href="manageUsers.php" class="header__nav-list-link">Manage Users</a></li>
-        <li class="header__nav-list-item"><a href="/" class="header__nav-list-link logout">Log Out</a></li>
+        <li class="header__nav-list-item"><a href="../user/logout.php" class="header__nav-list-link">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -58,7 +61,7 @@
       </div>
 
       </div>
-      <div class="login__buttons">
+      <div class="add-product__buttons">
         <button type="reset" class="login__button">Reset</button>
         <button type="submit" class="login__button">Submit</button>
       </div>

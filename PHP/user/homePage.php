@@ -1,19 +1,38 @@
 <?php
-$cnn = mysqli_connect("0.0.0.0", "root", null, "CMPR_Project", 4306);
-if (!$cnn) {
-    die("Connection failed: " . mysqli_connect_error());
+global $con;
+include ("../session.php");
+include("../dbConnection.php");  // Import $con variable
+
+// Validate and sanitize GET parameters
+$valid_sort_columns = ["product_name", "price"];
+$valid_order_types = ["asc", "desc"];
+$valid_groups = ["all", "meals", "drinks", "starters", "desserts"];
+
+$sort_by = isset($_GET['sort_by']) && in_array($_GET['sort_by'], $valid_sort_columns) ? $_GET['sort_by'] : 'product_name';
+$order = isset($_GET['order']) && in_array($_GET['order'], $valid_order_types) ? $_GET['order'] : 'asc';
+$group_to_display = isset($_GET['display_group']) && in_array($_GET['display_group'], $valid_groups) ? $_GET['display_group'] : 'all';
+
+
+$query = "SELECT product_name, product_description, product_category, price, preview_image_name FROM products";
+
+// Add a WHERE clause if a specific group is selected
+if ($group_to_display !== "all") {
+    $group_to_display_safe = mysqli_real_escape_string($con, $group_to_display);
+    $query .= " WHERE product_category = '$group_to_display_safe'";
 }
 
-// Fetch products from database
-$query = "SELECT product_name, product_description, product_category, price, preview_image_name FROM products";
-$result = mysqli_query($cnn, $query);
+// Add the ORDER BY clause
+$query .= " ORDER BY $sort_by $order";
+
+$result = mysqli_query($con, $query);
 
 if (!$result) {
-    die("Error: " . mysqli_error($cnn));
+    die("Error: " . mysqli_error($con));
 }
-mysqli_close($cnn);
 
+mysqli_close($con);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,31 +50,34 @@ mysqli_close($cnn);
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link active">Home page</a></li>
         <li class="header__nav-list-item"><a href="cart.php" class="header__nav-list-link">My Cart</a></li>
         <li class="header__nav-list-item"><a href="aboutUs.php" class="header__nav-list-link">About Us</a></li>
-        <li class="header__nav-list-item"><a href="/" class="header__nav-list-link logout">Log Out</a></li>
+        <li class="header__nav-list-item"><a href="logout.php" class="header__nav-list-link">Log Out</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <div class="order">
-      <div class="form__select-order">
-        <p class="login__input-name">Order by</p>
-        <select class="form__select">
-          <option>Alphabet</option>
-          <option>Price</option>
-          <option>Date</option>
-        </select>
+      <div class="order">
+          <form class="form__select-order" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
+              <p class="login__input-name">ORDER BY</p>
+              <select class="form__select" name="sort_by">
+                  <option value="product_name">Alphabet</option>
+                  <option value="price">Price</option>
+                  <!-- <option value="date">Date</option> -->
+              </select>
+              <select class="form__select" name="order">
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+              </select>
+              <p class="login__input-name">DISPLAY</p>
+              <select class="form__select" name="display_group">
+                  <option value="all">All</option>
+                  <option value="meals">Meals</option>
+                  <option value="drinks">Drinks</option>
+                  <option value="starters">Starters</option>
+                  <option value="desserts">Desserts</option>
+              </select>
+              <button type="submit">SHOW</button>
+          </form>
       </div>
-      <div>
-        <p class="login__input-name">Display</p>
-        <select class="form__select">
-          <option>All</option>
-          <option>Meals</option>
-          <option>Drinks</option>
-          <option>Starters</option>
-          <option>Desserts</option>
-        </select>
-      </div>
-    </div>
       <div class="home__grid-container">
           <?php
           if (mysqli_num_rows($result) > 0) {
