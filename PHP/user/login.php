@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <main class="login">
     <div class="login__container">
         <img class="logo" src="../images/logo.png" alt="Logo">
@@ -20,7 +23,7 @@
                 <input class="login__input" type="password" name="password" required>
             </fieldset>
             <div class="login__buttons">
-                <button class="login__button">Log In</button>
+                <button class="login__button" type="submit">Log In</button>
 <!--                <a href="signup.php" class="login__button">Sign Up</a>-->
             </div>
         </form>
@@ -30,7 +33,7 @@
 </main>
 <?php
 session_start(); // Start the session
-
+$error_message = "";
 $con = mysqli_connect("0.0.0.0","root",null,"CMPR_Project", 4306);
 if (!$con)
 {
@@ -44,38 +47,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate empty fields
     if (empty($username_or_email) || empty($password)) {
-        echo "Please fill in both username/email and password fields.";
-        exit();
+        $error_message = "Please fill in both username/email and password fields.";
     }
+    else {
+        // Prepared statement for login
+        $sql_stmt = $con->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+        $sql_stmt->bind_param("ss", $username_or_email, $username_or_email);
+        $sql_stmt->execute();
+        $result = $sql_stmt->get_result();
 
-    // Prepared statement for login
-    $sql_stmt = $con->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-    $sql_stmt->bind_param("ss", $username_or_email, $username_or_email);
-    $sql_stmt->execute();
-    $result = $sql_stmt->get_result();
+        if ($result->num_rows == 1) {
+            $user_data = $result->fetch_assoc();
 
-    if ($result->num_rows == 1) {
-        $user_data = $result->fetch_assoc();
-
-        if (password_verify($password, $user_data['password'])) {
-            $_SESSION = [
-                'is_admin' => false,
-                'logged_in' => true,
-                'user_id' => $user_data['user_id'],
-                'name' => $user_data['name'],
-                'username' => $user_data['username'],
-                'email' => $user_data['email']
-            ];
-            header("Cache-Control: no-cache, no-store, must-revalidate");
-            header("Pragma: no-cache");
-            header("Expires: 0");
-            header("Location: homePage.php");
-            exit();
+            if (password_verify($password, $user_data['password'])) {
+                $_SESSION = [
+                    'is_admin' => false,
+                    'logged_in' => true,
+                    'user_id' => $user_data['user_id'],
+                    'name' => $user_data['name'],
+                    'username' => $user_data['username'],
+                    'email' => $user_data['email']
+                ];
+                header("Cache-Control: no-cache, no-store, must-revalidate");
+                header("Pragma: no-cache");
+                header("Expires: 0");
+                header("Location: homePage.php");
+                exit();
+            } else {
+                $error_message = "Incorrect password.";
+            }
         } else {
-            echo "Incorrect password.";
+            $error_message = "Invalid username or email.";
         }
-    } else {
-        echo "Invalid username or email.";
+    }
+    if ($error_message) {
+//          echo "<script type='text/javascript'>alert('$error_message');</script>";
+        echo "<script type='text/javascript'>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Validation Error',
+                        text: '$error_message'
+                    });
+                });
+              </script>";
+        exit();
     }
 }
 ?>

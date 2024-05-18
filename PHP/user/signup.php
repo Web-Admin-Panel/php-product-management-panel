@@ -30,7 +30,7 @@
         </fieldset>
         <div class="signup__buttons">
           <button type="reset" class="login__button">Clear</button>
-          <button class="login__button">Sign Up</button>
+          <button type="submit" class="login__button">Sign Up</button>
         </div>
         <p class="login__password">Already have an account? <a class="login__redirect" href="login.php">Log In</a></p>
       </form>

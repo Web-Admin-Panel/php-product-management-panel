@@ -1,6 +1,6 @@
 <?php
-global $con;
 include ("../session.php");
+global $con;
 include("../dbConnection.php");  // Import $con variable
 
 // Validate and sanitize GET parameters
@@ -13,7 +13,7 @@ $order = isset($_GET['order']) && in_array($_GET['order'], $valid_order_types) ?
 $group_to_display = isset($_GET['display_group']) && in_array($_GET['display_group'], $valid_groups) ? $_GET['display_group'] : 'all';
 
 
-$query = "SELECT product_name, product_description, product_category, price, preview_image_name FROM products";
+$query = "SELECT product_id, product_name, product_description, product_category, price, preview_image_name FROM products";
 
 // Add a WHERE clause if a specific group is selected
 if ($group_to_display !== "all") {
@@ -54,7 +54,7 @@ mysqli_close($con);
       </ul>
     </nav>
   </header>
-  <main>
+  <main class="home__main">
       <div class="order">
           <form class="form__select-order" id="filterForm" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
               <div class="form__filter_elements">
@@ -65,8 +65,10 @@ mysqli_close($con);
                           <option value="price" <?php echo (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') ? 'selected' : ''; ?>>Price</option>
                       </select>
                       <select class="form__select" name="order" onchange="this.form.submit()">
-                          <option value="asc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'asc') ? 'selected' : ''; ?>>Ascending</option>
-                          <option value="desc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'desc') ? 'selected' : ''; ?>>Descending</option>
+                          <option value="asc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'asc') ? 'selected' : ''; ?>>&#8595;
+                          </option>
+                          <option value="desc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'desc') ? 'selected' : ''; ?>>&#8593;
+                          </option>
                       </select>
                   </div>
                   <div class="form__filter-element">
@@ -86,23 +88,27 @@ mysqli_close($con);
           </form>
 
       </div>
+      <div class="home__grid-wrapper">
       <div class="home__grid-container">
           <?php
           if (mysqli_num_rows($result) > 0) {
               while ($row = mysqli_fetch_assoc($result)) {
                   echo '<div class="home__grid-item">';
                   $image_path = "../data/preview_images/" . htmlspecialchars($row['preview_image_name']);
-                  echo '<img class="home__img" src="../data/preview_images/' . htmlspecialchars($row['preview_image_name']) . '" alt="' . htmlspecialchars($row['product_name']) . '">';
+                  echo '<div class="home__img-container"><img class="home__img" src="../data/preview_images/' . htmlspecialchars($row['preview_image_name']) . '" alt="' . htmlspecialchars($row['product_name']) . '"></div>';
                   echo '<h3>' . htmlspecialchars($row['product_name']) . '</h3>';
                   echo '<p>' . htmlspecialchars($row['product_description']) . '</p>';
                   echo '<p>Category: ' . htmlspecialchars($row['product_category']) . '</p>';
                   echo '<p>Price: ' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
+                  echo "<div class='manage-product-buttons'><input type='button' class='login__button' value='Add to Cart' onclick = \"window.location.href='addItemToCart.php?id=".$row["product_id"]."'\">";
+                  echo "</div>";
                   echo '</div>';
               }
           } else {
               echo "No products found.";
           }
           ?>
+      </div>
       </div>
 
   </main>
