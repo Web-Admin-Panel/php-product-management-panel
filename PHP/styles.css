@@ -195,13 +195,13 @@
   display: flex;
 }
 
-
 /* Styles for the order form */
 .form__select-order {
   display: flex;
   align-items: center;
   gap: 15px;
-  background-color: #f8f8f8; /* Light background for the form */
+  /*background-color: #f8f8f8;*/
+  background-color: #bddbfc;
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
