@@ -124,6 +124,20 @@
 
 .login__buttons {
   display: flex;
+  justify-content: center;
+  margin: 50px 2px 50px;
+  width: 100%;
+}
+
+.signup__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 2px 50px;
+  width: 100%;
+}
+
+.add-product__buttons {
+  display: flex;
   justify-content: space-between;
   margin: 50px 2px 50px;
   width: 100%;
@@ -140,6 +154,10 @@
   padding: 13px 50px;
   cursor: pointer;
   text-decoration: none;
+}
+
+.signup-redirect {
+  color: #3456F3;
 }
 
 .login__password {
@@ -177,9 +195,69 @@
   display: flex;
 }
 
+
+/* Styles for the order form */
 .form__select-order {
-  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #f8f8f8; /* Light background for the form */
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-bottom: 20px; /* Space below the form */
 }
+
+/* Style for the form labels */
+.form__select-order p {
+  margin: 0 10px 0 0; /* Space between label and select */
+  font-size: 16px;
+  /*font-weight: bold; !* Make labels bold *!*/
+  color: #000; /* Black text */
+}
+
+/* Style for the select elements */
+.form__select-order .form__select,
+.form__select-order select {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #000; /* Black text */
+  outline: none; /* Remove outline */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth border and shadow transition */
+}
+
+.form__select-order .form__select:hover,
+.form__select-order select:hover {
+  border-color: #007bff; /* Blue border on hover */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on hover */
+}
+
+.form__select-order .form__select:focus,
+.form__select-order select:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */
+}
+
+/* Style for the submit button */
+.form__select-order button {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff; /* Blue background */
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.form__select-order button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
 
 
 .home__grid-container {
