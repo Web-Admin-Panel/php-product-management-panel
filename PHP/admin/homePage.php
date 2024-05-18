@@ -1,5 +1,6 @@
 <?php
 include ("../session.php");
+include("../isAdmin.php");
 global $con;
 include("../dbConnection.php");  // Import $con variable
 
@@ -48,7 +49,7 @@ mysqli_close($con);
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link active">Home page</a></li>
         <li class="header__nav-list-item"><a href="addProduct.php" class="header__nav-list-link">Add Product</a></li>
         <li class="header__nav-list-item"><a href="manageUsers.php" class="header__nav-list-link">Manage Users</a></li>
-        <li class="header__nav-list-item"><a href="/" class="header__nav-list-link logout">Log Out</a></li>
+        <li class="header__nav-list-item"><a href="../user/logout.php" class="header__nav-list-link">Log Out</a></li>
       </ul>
     </nav>
   </header>

@@ -6,9 +6,36 @@ include("../dbConnection.php");  // Import $con variable
 // Get the current user's ID
 $user_id = $_SESSION['user_id'];
 
+// Handle quantity changes
+if (isset($_GET['product_id']) && isset($_GET['action'])) {
+    $product_id = (int)$_GET['product_id'];
+    $action = $_GET['action'];
+
+    // Fetch the current amount
+    $query = "SELECT amount FROM user_products WHERE user_id = '$user_id' AND product_id = '$product_id'";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row) {
+        $current_amount = (int)$row['amount'];
+
+        if ($action == 'increase') {
+            $new_amount = $current_amount + 1;
+        } elseif ($action == 'decrease' && $current_amount > 1) {
+            $new_amount = $current_amount - 1;
+        } else {
+            $new_amount = $current_amount;
+        }
+
+        $update_query = "UPDATE user_products SET amount = '$new_amount' WHERE user_id = '$user_id' AND product_id = '$product_id'";
+        mysqli_query($con, $update_query);
+        header("Location: cart.php");
+    }
+}
+
 // Fetch products in the user's cart
 $query = "
-    SELECT p.product_id, p.product_name, p.product_description, p.product_category, p.price, p.preview_image_name 
+    SELECT p.product_id, p.product_name, p.product_description, p.product_category, p.price, p.preview_image_name, up.amount
     FROM products p
     JOIN user_products up ON p.product_id = up.product_id
     WHERE up.user_id = '$user_id'
@@ -20,7 +47,7 @@ if (!$result) {
     die("Error: " . mysqli_error($con));
 }
 
-mysqli_close($con);
+$total_price = 0;
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +76,7 @@ mysqli_close($con);
             <?php
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $total_price += $row['price'] * $row['amount'];
                     echo '<div class="home__grid-item">';
                     $image_path = "../data/preview_images/" . htmlspecialchars($row['preview_image_name']);
                     echo '<div class="home__img-container"><img class="home__img" src="' . $image_path . '" alt="' . htmlspecialchars($row['product_name']) . '"></div>';
@@ -56,7 +84,12 @@ mysqli_close($con);
                     echo '<p>' . htmlspecialchars($row['product_description']) . '</p>';
                     echo '<p>Category: ' . htmlspecialchars($row['product_category']) . '</p>';
                     echo '<p>Price: $' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
-                    echo "<div class='manage-product-buttons'><input type='button' class='login__button' value='Remove' onclick=\"window.location.href='removeProductFromCart.php?id=".$row['product_id']."'\">";
+                    echo '<div class="quantity-control">';
+                    echo "<button class='counter__button' onclick=\"window.location.href='cart.php?product_id=" . $row['product_id'] . "&action=decrease'\">-</button>";
+                    echo '<span>' . htmlspecialchars($row['amount']) . '</span>';
+                    echo "<button class='counter__button' onclick=\"window.location.href='cart.php?product_id=" . $row['product_id'] . "&action=increase'\">+</button>";
+                    echo '</div>';
+                    echo "<div class='manage-product-buttons'><input type='button' class='login__button' value='Delete' onclick=\"window.location.href='removeProductFromCart.php?id=" . $row['product_id'] . "'\">";
                     echo '</div>';
                     echo '</div>';
                 }
@@ -66,9 +99,14 @@ mysqli_close($con);
             ?>
         </div>
     </div>
+    <div class="cart-total">
+        <h1>Total: $<?php echo number_format($total_price, 2); ?></h1>
+    </div>
     <div class="cart-actions">
-        <button class="cart__button" onclick="window.location.href='clearCart.php'">Clear Cart</button>
-        <button class="cart__button" onclick="window.location.href='order.php'">Order</button>
+<!--        <button class="cart__button" onclick="window.location.href='clearCart.php'">Clear Cart</button>-->
+<!--        <button class="cart__button" onclick="window.location.href='makeOrder.php'">Order</button>-->
+        <button class="login__button" onclick="window.location.href='clearCart.php'">Clear Cart</button>
+        <button class="login__button" onclick="window.location.href='makeOrder.php'">Order</button>
     </div>
 </main>
 <footer class="footer">

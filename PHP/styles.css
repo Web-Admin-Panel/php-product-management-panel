@@ -109,7 +109,7 @@
 }
 
 .login__input-name {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 12px;
   color: #A0A0A0;
   margin-bottom: 10px;
@@ -165,6 +165,66 @@
   /*padding-right: 20px;*/
   /*width: 100%;*/
 }
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.quantity-control button {
+  background-color: #3456F3; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 5px 10px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Increase font size */
+  margin: 0 5px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.quantity-control span {
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.quantity-control button:hover {
+  background-color: #5e7cff; /* Darker green background on hover */
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.cart-actions {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.cart__button {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 15px 32px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the buttons appear side by side */
+  font-size: 16px; /* Increase font size */
+  margin: 4px 2px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 12px; /* Rounded corners */
+}
+
+.cart__button:hover {
+  background-color: #45a049; /* Darker green background on hover */
+}
+
+
 
 .manage-product-button {
   font-family: serif;

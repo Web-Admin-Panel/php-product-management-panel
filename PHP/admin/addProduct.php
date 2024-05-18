@@ -131,8 +131,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileName = $_FILES['preview_image']['name'];
         $fileSize = $_FILES['preview_image']['size'];
         $fileType = $_FILES['preview_image']['type'];
-        $fileNameCmps = explode(".", $fileName);
-        $fileExtension = strtolower(end($fileNameCmps));
+        $fileNameExtension = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameExtension));
 //        echo "File is sent. " . " $fileTmpPath; " . " $fileName; " . " $fileSize; " . "$fileNameCmps; " . " $fileExtension; " . "\n";
 
 
