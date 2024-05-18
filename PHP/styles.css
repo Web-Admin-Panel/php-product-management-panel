@@ -190,36 +190,56 @@
 }
 
 .order {
-  width: 60%;
+  width: 70%;
   margin: auto;
   display: flex;
+  justify-content: center;
 }
 
-/* Styles for the order form */
+
 .form__select-order {
+  border: 1.5px solid black;
   display: flex;
   align-items: center;
   gap: 15px;
-  /*background-color: #f8f8f8;*/
-  background-color: #bddbfc;
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   margin-bottom: 20px; /* Space below the form */
 }
 
-/* Style for the form labels */
-.form__select-order p {
-  margin: 0 10px 0 0; /* Space between label and select */
-  font-size: 16px;
-  /*font-weight: bold; !* Make labels bold *!*/
-  color: #000; /* Black text */
+.form__filter_elements {
+  display: flex;
+  justify-content: space-between;
 }
+.form__filter-element {
+  display: flex;
+  flex-direction: column;
+  /*margin: 0 16px 0 0;*/
+  /*justify-content: ;*/
+}
+
+.form__filter-element:first-of-type {
+  margin: 0 40px 0 0;
+}
+
+.form__filter-element-label {
+  margin: 0 0 10px;
+  color: #000;
+}
+/*!* Style for the form labels *!*/
+/*.form__select-order p {*/
+/*  margin: 0 10px 0 0; !* Space between label and select *!*/
+/*  font-size: 16px;*/
+/*  !*font-weight: bold; !* Make labels bold *!*!*/
+/*  color: #000; !* Black text *!*/
+/*}*/
 
 /* Style for the select elements */
 .form__select-order .form__select,
 .form__select-order select {
-  padding: 7px 10px;
+  margin-bottom: 8px;
+  /*padding: 7px 10px;*/
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: #fff;

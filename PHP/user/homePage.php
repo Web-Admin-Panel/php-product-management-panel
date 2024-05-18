@@ -57,23 +57,31 @@ mysqli_close($con);
   <main>
       <div class="order">
           <form class="form__select-order" id="filterForm" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
-              <p class="login__input-name">ORDER BY</p>
-              <select class="form__select" name="sort_by" onchange="this.form.submit()">
-                  <option value="product_name" <?php echo (isset($_GET['sort_by']) && $_GET['sort_by'] == 'product_name') ? 'selected' : ''; ?>>Alphabet</option>
-                  <option value="price" <?php echo (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') ? 'selected' : ''; ?>>Price</option>
-              </select>
-              <select class="form__select" name="order" onchange="this.form.submit()">
-                  <option value="asc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'asc') ? 'selected' : ''; ?>>Ascending</option>
-                  <option value="desc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'desc') ? 'selected' : ''; ?>>Descending</option>
-              </select>
-              <p class="login__input-name">DISPLAY</p>
-              <select class="form__select" name="display_group" onchange="this.form.submit()">
-                  <option value="all" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'all') ? 'selected' : ''; ?>>All</option>
-                  <option value="meals" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'meals') ? 'selected' : ''; ?>>Meals</option>
-                  <option value="drinks" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'drinks') ? 'selected' : ''; ?>>Drinks</option>
-                  <option value="starters" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'starters') ? 'selected' : ''; ?>>Starters</option>
-                  <option value="desserts" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'desserts') ? 'selected' : ''; ?>>Desserts</option>
-              </select>
+              <div class="form__filter_elements">
+                  <div class="form__filter-element">
+                      <p class="form__filter-element-label">ORDER BY</p>
+                      <select class="form__select" name="sort_by" onchange="this.form.submit()">
+                          <option value="product_name" <?php echo (isset($_GET['sort_by']) && $_GET['sort_by'] == 'product_name') ? 'selected' : ''; ?>>Alphabet</option>
+                          <option value="price" <?php echo (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') ? 'selected' : ''; ?>>Price</option>
+                      </select>
+                      <select class="form__select" name="order" onchange="this.form.submit()">
+                          <option value="asc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'asc') ? 'selected' : ''; ?>>Ascending</option>
+                          <option value="desc" <?php echo (isset($_GET['order']) && $_GET['order'] == 'desc') ? 'selected' : ''; ?>>Descending</option>
+                      </select>
+                  </div>
+                  <div class="form__filter-element">
+                      <p class="form__filter-element-label">DISPLAY</p>
+                      <select class="form__select" name="display_group" onchange="this.form.submit()">
+                          <option value="all" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'all') ? 'selected' : ''; ?>>All</option>
+                          <option value="meals" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'meals') ? 'selected' : ''; ?>>Meals</option>
+                          <option value="drinks" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'drinks') ? 'selected' : ''; ?>>Drinks</option>
+                          <option value="starters" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'starters') ? 'selected' : ''; ?>>Starters</option>
+                          <option value="desserts" <?php echo (isset($_GET['display_group']) && $_GET['display_group'] == 'desserts') ? 'selected' : ''; ?>>Desserts</option>
+                      </select>
+                  </div>
+              </div>
+
+
 <!--              <button type="submit">SHOW</button>-->
           </form>
 

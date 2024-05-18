@@ -39,6 +39,7 @@ mysqli_close($con);
   </header>
   <div class="order">
       <form class="form__select-order" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
+
           <p class="login__input-name">ORDER BY</p>
           <select class="form__select" name="sort_by">
               <option value="product_name">Alphabet</option>
