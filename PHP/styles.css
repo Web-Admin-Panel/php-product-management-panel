@@ -8,7 +8,7 @@
 .header__nav-list {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header__nav-list-item {

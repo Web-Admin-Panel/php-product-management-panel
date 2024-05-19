@@ -44,7 +44,7 @@ mysqli_close($con);
 </head>
 <body>
   <header class="header">
-    <img class="logo" src="../images/logo.png" alt="logo">
+    <img class="logo" src="../data/logo_images/logo.png" alt="logo">
     <nav class="header__nav">
       <ul class="header__nav-list">
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link active">Home page</a></li>
@@ -116,8 +116,8 @@ mysqli_close($con);
     <p>Instant Hunger Fix, Delivered</p>
     <p>&#169; Copyright</p>
     <nav>
-      <a href="https://github.com/Web-Admin-Panel/php-product-management-panel/tree/main" target="_blank"><img class="footer__icon" src="../images/github.png" alt="Github icon"></a>
-      <a href="http://t.me/remainedmind"><img class="footer__icon" src="../images/telegram.png" alt="Telegram icon" target="_blank"></a>
+      <a href="https://github.com/Web-Admin-Panel/php-product-management-panel/tree/main" target="_blank"><img class="footer__icon" src="../data/logo_images/github.png" alt="Github icon"></a>
+      <a href="http://t.me/remainedmind"><img class="footer__icon" src="../data/logo_images/telegram.png" alt="Telegram icon" target="_blank"></a>
     </nav>
   </footer>
 </body>

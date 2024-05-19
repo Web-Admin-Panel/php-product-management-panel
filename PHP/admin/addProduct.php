@@ -11,6 +11,7 @@ include ("../session.php");
 </head>
 <body>
   <header class="header">
+    <img class="logo" src="../data/logo_images/logo.png" alt="logo">
     <nav class="header__nav">
       <ul class="header__nav-list">
         <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link">Home page</a></li>
@@ -23,7 +24,6 @@ include ("../session.php");
   <main class="page">
 
     <form class="login__form" action="<?php echo $_SERVER["PHP_SELF"];  ?>" method="post" enctype="multipart/form-data">
-    <img class="login__logo" src="../images/logo.png" alt="Logo">
       <fieldset class="login__fieldset">
         <p class="login__input-name">Name</p>
         <input class="login__input" type="text" name="name" required>
@@ -163,5 +163,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 ?>
+<footer class="footer">
+  <p>Instant Hunger Fix, Delivered</p>
+  <p>&#169; Copyright</p>
+  <nav>
+      <a href="https://github.com/Web-Admin-Panel/php-product-management-panel/tree/main" target="_blank"><img class="footer__icon" src="../data/logo_images/github.png" alt="Github icon"></a>
+      <a href="http://t.me/remainedmind"><img class="footer__icon" src="../data/logo_images/telegram.png" alt="Telegram icon" target="_blank"></a>
+  </nav>
+</footer>
 </body>
 </html>

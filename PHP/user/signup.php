@@ -13,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <main class="login">
     <div class="login__container">
-      <img class="logo" src="../images/logo.png" alt="Logo">
+      <img class="logo" src="../data/logo_images/logo.png" alt="Logo">
       <h2 class="login__title">Welcome to The Golden Cup</h2>
       <form class="login__form" action="<?php echo $_SERVER["PHP_SELF"];  ?>" method="post">
         <fieldset class="login__fieldset">
@@ -70,9 +70,8 @@
 //          return;
 //          exit();
       }
-
       // Check for existing username or email (combined query)
-      $sql_stmt = $con->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+      $sql_stmt = $con->prepare("SELECT * FROM users WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?)");
       $sql_stmt->bind_param("ss", $username, $email);
       $sql_stmt->execute();
       $result = $sql_stmt->get_result();
@@ -81,7 +80,7 @@
       // Validation part
       if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
-          if ($row['username'] == $username) {
+          if ($row['username'] == strtolower($username)) {
               $error_message = "Username already exists! Please choose another.";
 
           } else {
@@ -141,5 +140,13 @@
 
   }
   ?>
+  <footer class="footer">
+      <p>Instant Hunger Fix, Delivered</p>
+      <p>&#169; Copyright</p>
+      <nav>
+          <a href="https://github.com/Web-Admin-Panel/php-product-management-panel/tree/main" target="_blank"><img class="footer__icon" src="../data/logo_images/github.png" alt="Github icon"></a>
+          <a href="https://t.me/remainedmind"><img class="footer__icon" src="../data/logo_images/telegram.png" alt="Telegram icon" target="_blank"></a>
+      </nav>
+  </footer>
 </body>
 </html>
