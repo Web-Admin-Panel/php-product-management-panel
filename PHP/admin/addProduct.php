@@ -144,7 +144,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 products(product_name, product_description, product_category, price, preview_image_name) 
                 VALUES 
                 ('$name', '$description', '$category', '$price', '$newFileName')";
-            if (mysqli_query($cnn, $sqlFile)) {
+            if (mysqli_query($con, $sqlFile)) {
                 echo "File is successfully uploaded and file info saved in database.";
             } else {
                 echo "Error in adding file information to the database.";
