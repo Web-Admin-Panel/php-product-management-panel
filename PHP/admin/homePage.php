@@ -46,10 +46,10 @@ mysqli_close($con);
     <img class="logo" src="../data/logo_images/logo.png" alt="logo">
     <nav class="header__nav">
       <ul class="header__nav-list">
-        <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link active">Home page</a></li>
-        <li class="header__nav-list-item"><a href="addProduct.php" class="header__nav-list-link">Add Product</a></li>
-        <li class="header__nav-list-item"><a href="manageUsers.php" class="header__nav-list-link">Manage Users</a></li>
-        <li class="header__nav-list-item"><a href="../user/logout.php" class="header__nav-list-link">Log Out</a></li>
+          <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link header__admin-nav-list-link active"><span>Home</span> <span>page</span></a></li>
+          <li class="header__nav-list-item"><a href="addProduct.php" class="header__nav-list-link header__admin-nav-list-link"><span>Add</span> <span>Product</span></a></li>
+          <li class="header__nav-list-item"><a href="manageUsers.php" class="header__nav-list-link header__admin-nav-list-link"><span>Manage</span> <span>Users</span></a></li>
+          <li class="header__nav-list-item"><a href="../user/logout.php" class="header__nav-list-link header__admin-nav-list-link"><span>Log</span> <span>Out</span></a></li>
       </ul>
     </nav>
   </header>

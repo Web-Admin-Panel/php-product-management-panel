@@ -21,7 +21,7 @@ include ("../session.php");
       </ul>
     </nav>
   </header>
-  <main>
+  <main style="margin: 0 50px">
 
       <section>
           <h2>Our Story</h2>
