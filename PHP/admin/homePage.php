@@ -95,9 +95,9 @@ mysqli_close($con);
                           <option value="price" <?php echo ($sort_by == 'price') ? 'selected' : ''; ?>>Price</option>
                       </select>
                       <select class="form__select" name="order" onchange="this.form.submit()">
-                          <option value="asc" <?php echo ($order == 'asc') ? 'selected' : ''; ?>>&#8595;
+                          <option value="asc" <?php echo ($order == 'asc') ? 'selected' : ''; ?>>&#8593;
                           </option>
-                          <option value="desc" <?php echo ($order == 'desc') ? 'selected' : ''; ?>>&#8593;
+                          <option value="desc" <?php echo ($order == 'desc') ? 'selected' : ''; ?>>&#8595;
                           </option>
                       </select>
                   </div>
