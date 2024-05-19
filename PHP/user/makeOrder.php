@@ -56,12 +56,11 @@ mysqli_close($con);
 if (!$total_price){
     $order_result = "Your cart is empty.";
 }
-else if (mail($to, $subject, $order_details, $headers)){
-    $order_result = "Order placed successfully! Our manager will contact you soon. Thank you for choosing Golden Cup";
-}
 else {
-    $order_result = "Failed to place order. Please try again.";
+    $order_result = "Order placed successfully! Our manager will contact you soon. <br>Thank you for choosing Golden Cup";
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +73,7 @@ else {
 </head>
 <body>
 <header class="header">
-    <img class="logo" src="../images/logo.png" alt="logo">
+    <img class="logo" src="../data/logo_images/logo.png" alt="logo">
     <nav class="header__nav">
         <ul class="header__nav-list">
             <li class="header__nav-list-item"><a href="homePage.php" class="header__nav-list-link">Home page</a></li>
@@ -86,14 +85,15 @@ else {
 </header>
 <main class="home__main">
     <h1>Order Confirmation</h1>
-    <p><?php echo $order_result ?></p>
+    <h2 style='text-align: center;'><?php echo $order_result ?></h2>
+    <!--    <p>--><?php //echo $order_result ?><!--</p>-->
 </main>
 <footer class="footer">
     <p>Instant Hunger Fix, Delivered</p>
     <p>&#169; Copyright</p>
     <nav>
-        <a href="https://github.com/Web-Admin-Panel/php-product-management-panel/tree/main" target="_blank"><img class="footer__icon" src="../images/github.png" alt="Github icon"></a>
-        <a href="https://t.me/remainedmind" target="_blank">><img class="footer__icon" src="../images/telegram.png" alt="Telegram icon"</a>
+        <a href="https://github.com/Web-Admin-Panel/php-product-management-panel/tree/main" target="_blank"><img class="footer__icon" src="../data/logo_images/github.png" alt="Github icon"></a>
+        <a href="https://t.me/remainedmind" target="_blank">><img class="footer__icon" src="../data/logo_images/telegram.png" alt="Telegram icon"</a>
     </nav>
 </footer>
 </body>

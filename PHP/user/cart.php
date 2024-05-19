@@ -72,9 +72,9 @@ $total_price = 0;
 </header>
 <main class="home__main">
     <div class="home__grid-wrapper">
-        <div class="home__grid-container">
             <?php
             if (mysqli_num_rows($result) > 0) {
+                echo '<div class="home__grid-container">';
                 while ($row = mysqli_fetch_assoc($result)) {
                     $total_price += $row['price'] * $row['amount'];
                     echo '<div class="home__grid-item">';
@@ -92,12 +92,13 @@ $total_price = 0;
                     echo "<div class='manage-product-buttons'><input type='button' class='login__button' value='Delete' onclick=\"window.location.href='removeProductFromCart.php?id=" . $row['product_id'] . "'\">";
                     echo '</div>';
                     echo '</div>';
+                    echo '</div>';
                 }
             } else {
-                echo "No products found.";
+                echo "<h2 style='text-align: center;'>Your cart is empty.</h2>";
             }
             ?>
-        </div>
+
     </div>
     <div class="cart-total">
         <h1>Total: <?php echo number_format($total_price, 2); ?></h1>
