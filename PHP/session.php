@@ -6,7 +6,6 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
     $user_name = $_SESSION['name'];
     $user_username = $_SESSION['username'];
     $user_email = $_SESSION['email'];
-    include("dbConnectionTemplate.php");
     $user_id = $_SESSION['user_id'];
 //    $query = "SELECT admin_level FROM admins WHERE user_id = ?";
 //    $stmt = $con->prepare($query);

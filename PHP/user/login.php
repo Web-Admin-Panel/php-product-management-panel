@@ -42,9 +42,10 @@
 session_start(); // Start the session
 global $con;
 include("../dbConnection.php");  // Import $con variable
-$error_message = "";
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $error_message = "";
     $username_or_email = $_POST["username_or_email"]; // Combined username/email field
     $password = $_POST["password"];
 
