@@ -2,7 +2,7 @@
 include ("../session.php");
 include("../isAdmin.php");
 global $con;
-include("../dbConnection.php");  // Import $con variable
+include("../dbConnectionTemplate.php");  // Import $con variable
 
 $product_id = $_GET["id"];
 

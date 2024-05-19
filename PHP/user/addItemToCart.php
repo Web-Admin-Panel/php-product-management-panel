@@ -1,7 +1,7 @@
 <?php
 include ("../session.php");
 global $con;
-include("../dbConnection.php");  // Import $con variable
+include("../dbConnectionTemplate.php");  // Import $con variable
 
 $user_id = $_SESSION['user_id'];
 $product_id = $_GET["id"];

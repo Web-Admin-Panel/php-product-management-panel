@@ -26,3 +26,4 @@
 /vendors/*
 .DS_Store
 /PHP/data/preview_images/
+/PHP/dbConnection.php

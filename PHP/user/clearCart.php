@@ -1,7 +1,7 @@
 <?php
 include("../session.php");
 global $con;
-include("../dbConnection.php");
+include("../dbConnectionTemplate.php");
 
 $user_id = $_SESSION['user_id'];
 
