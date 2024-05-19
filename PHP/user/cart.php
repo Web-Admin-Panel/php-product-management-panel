@@ -83,7 +83,7 @@ $total_price = 0;
                     echo '<h3>' . htmlspecialchars($row['product_name']) . '</h3>';
                     echo '<p>' . htmlspecialchars($row['product_description']) . '</p>';
                     echo '<p>Category: ' . htmlspecialchars($row['product_category']) . '</p>';
-                    echo '<p>Price: $' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
+                    echo '<p>Price: ' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
                     echo '<div class="quantity-control">';
                     echo "<button class='counter__button' onclick=\"window.location.href='cart.php?product_id=" . $row['product_id'] . "&action=decrease'\">-</button>";
                     echo '<span>' . htmlspecialchars($row['amount']) . '</span>';
@@ -100,7 +100,7 @@ $total_price = 0;
         </div>
     </div>
     <div class="cart-total">
-        <h1>Total: $<?php echo number_format($total_price, 2); ?></h1>
+        <h1>Total: <?php echo number_format($total_price, 2); ?></h1>
     </div>
     <div class="cart-actions">
 <!--        <button class="cart__button" onclick="window.location.href='clearCart.php'">Clear Cart</button>-->
@@ -117,5 +117,25 @@ $total_price = 0;
         <a href="http://t.me/remainedmind"><img class="footer__icon" src="../data/logo_images/telegram.png" alt="Telegram icon" target="_blank"></a>
     </nav>
 </footer>
+<script>
+    // Save scroll position before the page unloads
+    window.onbeforeunload = function () {
+        var scrollPos = window.scrollY;
+        document.cookie = "scrollPos=" + scrollPos;
+    };
+
+    // Retrieve saved scroll position and scroll to it
+    window.onload = function () {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.startsWith('scrollPos=')) {
+                var scrollPos = cookie.split('=')[1];
+                window.scrollTo(0, parseInt(scrollPos));
+                break;
+            }
+        }
+    };
+</script>
 </body>
 </html>
