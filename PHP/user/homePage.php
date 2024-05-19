@@ -156,7 +156,7 @@ mysqli_close($con);
                       echo "<input type='button' class='login__button' value='Add to Cart' onclick = \"window.location.href='addItemToCart.php?id=" . $product_id . "'\">";
                   }
                   echo "</div>";
-                  echo '</div>';
+                  echo "</div>";
               }
           } else {
               echo "No products found.";
