@@ -34,7 +34,7 @@
 <!--                <a href="signup.php" class="login__button">Sign Up</a>-->
             </div>
         </form>
-        <p><a href="/" class="login__password">Forgot password?</a></p>
+        <p><a href="signup.php" class="login__password">Forgot password?</a></p>
         <p><a href="signup.php" class="login__password">Don't have an account? <span class="signup-redirect">Sign Up</span></a></p>
     </div>
 </main>
@@ -87,15 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     'username' => $user_data['username'],
                     'email' => $user_data['email']
                 ];
-                if ($is_admin) {
-                    header("Location: ../admin/homePage.php");
-                } else {
-                    header("Cache-Control: no-cache, no-store, must-revalidate");
-                    header("Pragma: no-cache");
-                    header("Expires: 0");
-                    header("Location: homePage.php");
-                }
-//                return;
+                header("Location: homePage.php");
             } else {
                 $error_message = "Incorrect password.";
             }
