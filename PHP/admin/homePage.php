@@ -2,8 +2,7 @@
 include ("../session.php");
 include("../isAdmin.php");
 global $con;
-include("../dbConnectionTemplate.php");  // Import $con variable
-
+include("../dbConnection.php");
 // Validate and sanitize GET parameters
 $valid_sort_columns = ["product_name", "price"];
 $valid_order_types = ["asc", "desc"];

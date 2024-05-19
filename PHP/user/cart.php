@@ -1,7 +1,7 @@
 <?php
 include ("../session.php");
 global $con;
-include("../dbConnectionTemplate.php");  // Import $con variable
+include("../dbConnection.php");  // Import $con variable
 
 // Get the current user's ID
 $user_id = $_SESSION['user_id'];

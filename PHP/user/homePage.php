@@ -1,7 +1,7 @@
 <?php
 include ("../session.php");
 global $con;
-include("../dbConnectionTemplate.php");  // Import $con variable
+include("../dbConnection.php");  // Import $con variable
 
 // Validate and sanitize GET parameters
 $valid_sort_columns = ["product_name", "price"];

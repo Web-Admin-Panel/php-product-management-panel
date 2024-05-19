@@ -2,8 +2,7 @@
 include ("../session.php");
 include("../isAdmin.php");
 global $con;
-include("../dbConnectionTemplate.php");  // Import $con variable
-
+include("../dbConnection.php");
 $product_id = $_GET["id"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -40,14 +40,8 @@
   <?php
   session_start();
   $error_message = "";
-  $con = mysqli_connect("0.0.0.0","root",null,"CMPR_Project", 4306);
-  if (!$con)
-  {
-      echo "Error in Connection: ";
-      exit();
-  }
-
-
+  global $con;
+  include("../dbConnection.php");  // Import $con variable
 
 
   if($_SERVER["REQUEST_METHOD"] == "POST")

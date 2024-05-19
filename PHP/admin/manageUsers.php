@@ -2,6 +2,7 @@
 include ("../session.php");
 include("../isAdmin.php");
 global $con;
+include("../dbConnection.php");
 
 $query = "SELECT * FROM users";
 

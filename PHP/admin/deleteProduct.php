@@ -2,8 +2,7 @@
 include ("../session.php");
 include("../isAdmin.php");
 global $con;
-include("../dbConnectionTemplate.php");  // Import $con variable
-
+include("../dbConnection.php");
 $id = $_GET["id"];
 
 // Fetch the preview_image_name before deleting the row

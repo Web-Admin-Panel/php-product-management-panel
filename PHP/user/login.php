@@ -41,7 +41,7 @@
 <?php
 session_start(); // Start the session
 global $con;
-include("../dbConnectionTemplate.php");  // Import $con variable
+include("../dbConnection.php");  // Import $con variable
 $error_message = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {

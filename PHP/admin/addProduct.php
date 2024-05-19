@@ -1,5 +1,8 @@
 <?php
 include ("../session.php");
+include("../isAdmin.php");
+global $con;
+include("../dbConnection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,14 +109,6 @@ include ("../session.php");
 
 
 <?php
-$cnn = mysqli_connect("0.0.0.0","root",null,"CMPR_Project", 4306);
-if (!$cnn)
-{
-    echo "Error in Connection: ";
-    exit();
-}
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $description = $_POST["description"];
