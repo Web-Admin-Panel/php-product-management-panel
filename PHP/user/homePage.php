@@ -3,6 +3,8 @@ include ("../session.php");
 global $con;
 include("../dbConnection.php");  // Import $con variable
 
+$user_id = $_SESSION['user_id'];
+
 // Validate and sanitize GET parameters
 $valid_sort_columns = ["product_name", "price"];
 $valid_order_types = ["asc", "desc"];
@@ -29,6 +31,21 @@ $result = mysqli_query($con, $query);
 if (!$result) {
     die("Error: " . mysqli_error($con));
 }
+
+$user_products_query = "SELECT product_id FROM user_products WHERE user_id = '$user_id'";
+$user_products_result = mysqli_query($con, $user_products_query);
+
+if (!$user_products_result) {
+    die("Error: " . mysqli_error($con));
+}
+
+$user_products = array();
+while ($row = mysqli_fetch_assoc($user_products_result)) {
+    $user_products[] = $row['product_id'];
+}
+
+mysqli_free_result($user_products_result);
+
 
 mysqli_close($con);
 ?>
@@ -95,12 +112,20 @@ mysqli_close($con);
               while ($row = mysqli_fetch_assoc($result)) {
                   echo '<div class="home__grid-item">';
                   $image_path = "../data/preview_images/" . htmlspecialchars($row['preview_image_name']);
+                  $product_id = $row["product_id"];
+                  $in_cart = in_array($product_id, $user_products);
                   echo '<div class="home__img-container"><img class="home__img" src="../data/preview_images/' . htmlspecialchars($row['preview_image_name']) . '" alt="' . htmlspecialchars($row['product_name']) . '"></div>';
                   echo '<h3>' . htmlspecialchars($row['product_name']) . '</h3>';
                   echo '<p>' . htmlspecialchars($row['product_description']) . '</p>';
                   echo '<p>Category: ' . htmlspecialchars($row['product_category']) . '</p>';
                   echo '<p>Price: ' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
-                  echo "<div class='manage-product-buttons'><input type='button' class='login__button' value='Add to Cart' onclick = \"window.location.href='addItemToCart.php?id=".$row["product_id"]."'\">";
+                  echo "<div class='manage-product-buttons'>";
+                  if ($in_cart) {
+                      echo "<input type='button' class='login__button' value='Added' onclick=\"window.location.href='removeProductFromCart.php?id=" . $row['product_id'] . "'\">";
+                  }
+                  else {
+                      echo "<input type='button' class='login__button' value='Add to Cart' onclick = \"window.location.href='addItemToCart.php?id=" . $product_id . "'\">";
+                  }
                   echo "</div>";
                   echo '</div>';
               }
