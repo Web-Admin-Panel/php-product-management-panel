@@ -17,16 +17,30 @@
       <h2 class="login__title">Welcome to The Golden Cup</h2>
       <form class="login__form" action="<?php echo $_SERVER["PHP_SELF"];  ?>" method="post">
         <fieldset class="login__fieldset">
-          <p class="login__input-name">Name</p>
-          <input class="login__input" type="text" name="name" required minlength="2">
-          <p class="login__input-name">Username</p>
-          <input class="login__input" type="text" name="username" required minlength="4">
-          <p class="login__input-name">E-mail</p>
-          <input class="login__input" type="email" name="email" required>
-          <p class="login__input-name">Password</p>
-          <input class="login__input" type="password" name="pass" required minlength="4">
-          <p class="login__input-name">Confirm password</p>
-          <input class="login__input" type="password" name="pass_confirmation" required minlength="4">
+            <label>
+                <p class="login__input-name">Name</p>
+                <input class="login__input" type="text" name="name" required minlength="2">
+            </label>
+
+            <label>
+                <p class="login__input-name">Username</p>
+                <input class="login__input" type="text" name="username" required minlength="4">
+            </label>
+
+            <label>
+                <p class="login__input-name">E-mail</p>
+                <input class="login__input" type="email" name="email" required>
+            </label>
+
+            <label>
+                <p class="login__input-name">Password</p>
+                <input class="login__input" type="password" name="pass" required minlength="4">
+            </label>
+
+            <label>
+                <p class="login__input-name">Confirm password</p>
+                <input class="login__input" type="password" name="pass_confirmation" required minlength="4">
+            </label>
         </fieldset>
         <div class="signup__buttons">
           <button type="reset" class="login__button">Clear</button>
@@ -74,7 +88,7 @@
       // Validation part
       if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
-          if ($row['username'] == strtolower($username)) {
+          if (strtolower($row['username']) == strtolower($username)) {
               $error_message = "Username already exists! Please choose another.";
 
           } else {
