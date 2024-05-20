@@ -8,7 +8,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
     $user_email = $_SESSION['email'];
     $user_id = $_SESSION['user_id'];
 } else {
-    header("Location: login.php");
+    header("Location: ../user/login.php");
     exit();
 }
 header("Cache-Control: no-cache, no-store, must-revalidate");
