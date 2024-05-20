@@ -114,10 +114,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $price = (float) $_POST["price"];
     $category = $_POST["category"];
-    echo "$name" . " | $description" . " | $price" . " | $category";
-    echo "<pre>";
+//    echo "$name" . " | $description" . " | $price" . " | $category";
+//    echo "<pre>";
 //    var_dump($_FILES);
-    echo "</pre>";
+//    echo "</pre>";
 
     //    if (isset($_FILES['files']) && $_FILES['files']['error'] == 0) {
     if (isset($_FILES['preview_image'])) {
@@ -145,11 +145,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES 
                 ('$name', '$description', '$category', '$price', '$newFileName')";
             if (mysqli_query($con, $sqlFile)) {
-                echo "File is successfully uploaded and file info saved in database.";
+                echo "Product is successfully uploaded and saved info the database.";
             } else {
                 echo "Error in adding file information to the database.";
             }
-            echo 'Moved!';
+//            echo 'Moved!';
         } else {
             echo 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
 
