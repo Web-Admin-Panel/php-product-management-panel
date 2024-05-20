@@ -87,7 +87,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     'username' => $user_data['username'],
                     'email' => $user_data['email']
                 ];
-                header("Location: homePage.php");
+                if ($is_admin){
+                    header("Location: ../admin/homePage.php");
+                }
+                else {
+//                    header("Cache-Control: no-cache, no-store, must-revalidate");
+//                    header("Pragma: no-cache");
+//                    header("Expires: 0");
+                    header("Location: homePage.php");
+                }
             } else {
                 $error_message = "Incorrect password.";
             }
