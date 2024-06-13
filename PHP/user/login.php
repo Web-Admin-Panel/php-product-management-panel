@@ -17,11 +17,6 @@
         <h2 class="login__title">Welcome!</h2>
         <form class="login__form" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <fieldset class="login__fieldset">
-<!--                <p class="login__input-name">E-mail or Username</p>-->
-<!--                <input class="login__input" type="text" name="username_or_email" required>-->
-<!--                <p class="login__input-name">Password</p>-->
-<!--                <input class="login__input" type="password" name="password" required>-->
-
                 <label class="login__input-name" for="username_or_email">E-mail or Username</label>
                 <input class="login__input" type="text" name="username_or_email" id="username_or_email" required>
 
@@ -31,7 +26,6 @@
             </fieldset>
             <div class="login__buttons">
                 <button class="login__button" type="submit">Log In</button>
-<!--                <a href="signup.php" class="login__button">Sign Up</a>-->
             </div>
         </form>
         <p><a href="signup.php" class="login__password">Forgot password?</a></p>
@@ -91,9 +85,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: ../admin/homePage.php");
                 }
                 else {
-//                    header("Cache-Control: no-cache, no-store, must-revalidate");
-//                    header("Pragma: no-cache");
-//                    header("Expires: 0");
                     header("Location: homePage.php");
                 }
             } else {

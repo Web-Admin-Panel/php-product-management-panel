@@ -73,30 +73,6 @@ $total_price = 0;
 <main class="home__main">
     <div class="home__grid-wrapper">
             <?php
-//            if (mysqli_num_rows($result) > 0) {
-//                echo '<div class="home__grid-container">';
-//                while ($row = mysqli_fetch_assoc($result)) {
-//                    $total_price += $row['price'] * $row['amount'];
-//                    echo '<div class="home__grid-item">';
-//                    $image_path = "../data/preview_images/" . htmlspecialchars($row['preview_image_name']);
-//                    echo '<div class="home__img-container"><img class="home__img" src="' . $image_path . '" alt="' . htmlspecialchars($row['product_name']) . '"></div>';
-//                    echo '<h3>' . htmlspecialchars($row['product_name']) . '</h3>';
-//                    echo '<p>' . htmlspecialchars($row['product_description']) . '</p>';
-//                    echo '<p>Category: ' . htmlspecialchars($row['product_category']) . '</p>';
-//                    echo '<p>Price: ' . htmlspecialchars(number_format($row['price'], 2)) . '</p>';
-//                    echo '<div class="quantity-control">';
-//                    echo "<button class='counter__button' onclick=\"window.location.href='cart.php?product_id=" . $row['product_id'] . "&action=decrease'\">-</button>";
-//                    echo '<span>' . htmlspecialchars($row['amount']) . '</span>';
-//                    echo "<button class='counter__button' onclick=\"window.location.href='cart.php?product_id=" . $row['product_id'] . "&action=increase'\">+</button>";
-//                    echo '</div>';
-//                    echo "<div class='manage-product-buttons'><input type='button' class='login__button' value='Delete' onclick=\"window.location.href='removeProductFromCart.php?id=" . $row['product_id'] . "'\">";
-//                    echo '</div>';
-//                    echo '</div>';
-//                    echo '</div>';
-//                }
-//            } else {
-//                echo "<h2 style='text-align: center;'>Your cart is empty.</h2>";
-//            }
             ?>
 
             <?php
@@ -130,13 +106,10 @@ $total_price = 0;
 
             ?>
         </div>
-    </div>
     <div class="cart-total">
         <h1>Total: <?php echo number_format($total_price, 2); ?></h1>
     </div>
     <div class="cart-actions">
-<!--        <button class="cart__button" onclick="window.location.href='clearCart.php'">Clear Cart</button>-->
-<!--        <button class="cart__button" onclick="window.location.href='makeOrder.php'">Order</button>-->
         <button class="login__button" onclick="window.location.href='clearCart.php'">Clear Cart</button>
         <button class="login__button" onclick="window.location.href='makeOrder.php'">Order</button>
     </div>

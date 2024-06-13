@@ -112,9 +112,6 @@ mysqli_close($con);
                       </select>
                   </div>
               </div>
-
-
-              <!--              <button type="submit">SHOW</button>-->
           </form>
 
       </div>

@@ -10,7 +10,6 @@ $product_id = $_GET["id"];
 $query = "DELETE FROM user_products WHERE user_id = '$user_id' and product_id = '$product_id'";
 if (mysqli_query($con, $query)) {
     header("Location: " . $_SERVER['HTTP_REFERER']);
-//    header("Location: cart.php");
 } else {
     echo "Error: " . mysqli_error($con);
 }

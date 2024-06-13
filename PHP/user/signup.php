@@ -67,16 +67,10 @@
       $pass_confirmation = $_POST["pass_confirmation"];
 
       if (!ctype_alnum($username)){
-//          echo "Special characters are not allowed for username!";
           $error_message = "Special characters are not allowed for username!";
-//          return;
-//          exit();
       }
       if (!ctype_alpha($name)){
-//          echo "Number and special characters are not allowed for name!";
           $error_message = "Numbers and special characters are not allowed for name!";
-//          return;
-//          exit();
       }
       // Check for existing username or email (combined query)
       $sql_stmt = $con->prepare("SELECT * FROM users WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?)");
@@ -100,7 +94,6 @@
       }
       // Check if there's an error and output the JavaScript for alert
       if ($error_message) {
-//          echo "<script type='text/javascript'>alert('$error_message');</script>";
           echo "<script type='text/javascript'>
                 document.addEventListener('DOMContentLoaded', function() {
                     Swal.fire({
@@ -116,14 +109,12 @@
       $password = password_hash($password, PASSWORD_DEFAULT);
 
       $sql_stmt = $con->prepare("INSERT INTO users(name, username, email, password) VALUES (?, ?, ?, ?);");
-//      $sql = "INSERT INTO users(name, username, email, password) VALUES ('$name', '$username', '$email', '$password')";
       $sql_stmt->bind_param("ssss", $name, $username, $email, $password);
       $name = mysqli_real_escape_string($con, $name);
       $email = mysqli_real_escape_string($con, $email);
       $username = mysqli_real_escape_string($con, $username);
       $password = mysqli_real_escape_string($con, $password);
 
-//      if(mysqli_query($con, $sql)){
       if($sql_stmt->execute()){
           echo "<h3>You've signed up successfully!</h3>";
           $inserted_id = $sql_stmt->insert_id;

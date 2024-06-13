@@ -47,13 +47,8 @@ include("../dbConnection.php");
                   <option>Starters</option>
                   <option>Desserts</option>
                 </select>
-<!--            </label>-->
         </div>
-<!--        <div class="file__wrapper">-->
-<!--          <p class="login__input-name">Preview image</p>-->
-<!--          <label for="files" class="file__text">Choose file</label>-->
-<!--          <input id="files" class="login__input file__input" type="file" required>-->
-<!--        </div>-->
+
       <div class="file__wrapper">
           <p class="login__input-name">Preview image</p>
           <div id="drop-area" class="drop-area">
@@ -82,6 +77,7 @@ include("../dbConnection.php");
           });
 
           dropArea.addEventListener('dragleave', (event) => {
+              event.preventDefault();
               dropArea.classList.remove('dragover');
           });
 
@@ -114,10 +110,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $price = (float) $_POST["price"];
     $category = $_POST["category"];
-//    echo "$name" . " | $description" . " | $price" . " | $category";
-//    echo "<pre>";
-//    var_dump($_FILES);
-//    echo "</pre>";
 
     //    if (isset($_FILES['files']) && $_FILES['files']['error'] == 0) {
     if (isset($_FILES['preview_image'])) {
@@ -149,7 +141,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Error in adding file information to the database.";
             }
-//            echo 'Moved!';
         } else {
             echo 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
 
